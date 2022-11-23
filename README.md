@@ -91,10 +91,10 @@ to network (priority: Bandwidth,..)
       - Define next hop: `ip nhrp nhs 2.2.2.1`
     - Add the OSPF type: `ip ospf network point-to-multipoint`
 - Spoke 2: 
-  `int tun1` 
-    `des DPLC-ISP01` 
-    `ip add 2.2.2.3 255.255.255.0`   
-    `ip nhrp map 2.2.2.1 1.1.1.1`  
+  `int tun1`  
+    `des DPLC-ISP01`   
+    `ip add 2.2.2.3 255.255.255.0`     
+    `ip nhrp map 2.2.2.1 1.1.1.1`    
     `ip nhrp map multicast 1.1.1.1`    
     `ip nhrp network-id 1`   
     `ip nhrp nhs 2.2.2.1`   
