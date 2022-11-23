@@ -91,33 +91,33 @@ to network (priority: Bandwidth,..)
       - Define next hop: `ip nhrp nhs 2.2.2.1`
     - Add the OSPF type: `ip ospf network point-to-multipoint`
 - Spoke 2: 
-  `int tun1
-    des DPLC-ISP01
-    ip add 2.2.2.3 255.255.255.0
-    ip nhrp map 2.2.2.1 1.1.1.1
-    ip nhrp map multicast 1.1.1.1
-    ip nhrp network-id 1
-    ip nhrp nhs 2.2.2.1
-    ip ospf network point-to-multipoint
-    tunnel source fa0/1
-    tunnel mode gre multipoint`
+  `int tun1 
+    des DPLC-ISP01 
+    ip add 2.2.2.3 255.255.255.0   
+    ip nhrp map 2.2.2.1 1.1.1.1  
+    ip nhrp map multicast 1.1.1.1    
+    ip nhrp network-id 1   
+    ip nhrp nhs 2.2.2.1   
+    ip ospf network point-to-multipoint   
+    tunnel source fa0/1   
+    tunnel mode gre multipoint` 
 
 - Verify: `sh ip ospf nei`
 
 3. Config IPSec in 3 R
 
-`# crypto isakmp policy 1
-   authentication pre-share
-   encryption 3des
-   hash sha
-   group 2
-   lifetime 86400
-   crypto isakmp key vpn@HQ2BR address 1.1.1.0 255.255.255.0    
-   crypto ipsec transform-set HQ-TRSET01-AES256-SHA esp-aes 256 esp-sha-hmac # crypto ipsec profile PR-HQ-DMVPN
-   set transform-set HQ-TRSET01-AES256-SHA
-   int tun 1
-   tunnel protection ipsec profile PR-HQ-DMVPN
-`
+`# crypto isakmp policy 1 
+   authentication pre-share 
+   encryption 3des 
+   hash sha 
+   group 2  
+   lifetime 86400 
+   crypto isakmp key vpn@HQ2BR address 1.1.1.0 255.255.255.0      
+   crypto ipsec transform-set HQ-TRSET01-AES256-SHA esp-aes 256 esp-sha-hmac # crypto ipsec profile   PR-HQ-DMVPN 
+   set transform-set HQ-TRSET01-AES256-SHA 
+   int tun 1  
+   tunnel protection ipsec profile PR-HQ-DMVPN 
+` 
 
 4. Test and Verify the Configuration 
 
